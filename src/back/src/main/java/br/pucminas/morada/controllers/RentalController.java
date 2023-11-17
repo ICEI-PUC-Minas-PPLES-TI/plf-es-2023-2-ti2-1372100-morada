@@ -6,6 +6,7 @@ import br.pucminas.morada.models.rental.dto.RentalUpdateDTO;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -66,6 +67,12 @@ public class RentalController {
     ){
         this.rentalService.update(id, rentalUpdateDTO.toEntity(Rental.class));
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/userRents")
+    public ResponseEntity<List<Map<String, Object>>> findAllRents(){
+        List<Map<String, Object>> rents = this.rentalService.findAllRentalsOfTheUser();
+        return ResponseEntity.ok(rents);
     }
 
 }

@@ -68,7 +68,7 @@ document.getElementById("formOffer").addEventListener("submit", async (event) =>
   try {
     const response = await API.post('offer',{
       rentValue: proposalValue,
-      property_id: id
+      propertyId: id
     });
     
     if(response.status === 201){

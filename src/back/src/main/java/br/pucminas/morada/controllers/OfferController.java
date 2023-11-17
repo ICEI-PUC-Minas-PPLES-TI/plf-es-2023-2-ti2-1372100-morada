@@ -62,11 +62,5 @@ public class OfferController {
         return ResponseEntity.ok(offers);
     }
 
-    // @GetMapping("/")
-    // public ResponseEntity<List<OfferDTO>> findAllByUser() {
-    //     List<Offer> offer = this.offerService.findAllByUser();
-    //     return ResponseEntity.ok().body(offer.stream().map(Offer::toDTO).toList());
-    // }
-
 
 }

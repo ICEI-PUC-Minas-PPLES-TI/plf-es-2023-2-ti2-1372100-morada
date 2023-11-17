@@ -2,6 +2,7 @@ package br.pucminas.morada.services;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,9 @@ public class RentalService {
             throw new AuthorizationException();
         }
 
-
+        public List<Map<String, Object>> findAllRentalsOfTheUser(){
+            UserSpringSecurity userSpringSecurity = UserService.getAuthenticatedUser();
+            return this.rentalRepository.findAllRentsByUserId(userSpringSecurity.getId());
+        }
 
 }
