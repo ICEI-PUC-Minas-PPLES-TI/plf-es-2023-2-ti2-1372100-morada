@@ -57,9 +57,15 @@ public class OfferController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/owner")
     public ResponseEntity<List<Map<String, Object>>> findAllOffers() {
         List<Map<String, Object>> offers = this.offerService.findAllOffersForTheUser();
+        return ResponseEntity.ok(offers);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<List<Map<String, Object>>> findAllSentOffers(){
+        List<Map<String, Object>> offers = this.offerService.findAllOffersOfTheUser();
         return ResponseEntity.ok(offers);
     }
 

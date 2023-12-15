@@ -18,5 +18,10 @@ public interface OfferRepository extends JpaRepository<Offer, Long>, JpaSpecific
 
     @Query(value = "SELECT p.photo_base64, p.street, p.id, p.type, o.rent_value, o.id FROM offer o JOIN property p ON o.property_id = p.id WHERE p.user_id = :user_id", nativeQuery = true)
     List<Map<String, Object>> findAllOffersByUserId(@Param("user_id") Long user_id);
+    
+    @Query(value = "SELECT p.photo_base64, p.street, p.id, p.type, o.rent_value, o.id FROM offer o JOIN property p ON o.property_id = p.id WHERE o.user_id = :user_id", nativeQuery = true)
+    List<Map<String, Object>> findAllOffersFromUser(@Param("user_id") Long user_id);
+
+
 
 }

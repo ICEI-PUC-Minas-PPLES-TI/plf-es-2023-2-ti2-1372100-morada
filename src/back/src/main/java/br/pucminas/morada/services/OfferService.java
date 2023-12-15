@@ -84,6 +84,11 @@ public class OfferService {
 
     }
 
+    public List<Map<String, Object>> findAllOffersOfTheUser(){
+        UserSpringSecurity userSpringSecurity = UserService.getAuthenticatedUser();
+        return this.offerRepository.findAllOffersFromUser(userSpringSecurity.getId());
+    }
+
     
 
 

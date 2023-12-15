@@ -61,7 +61,7 @@ document.getElementById("btnConfirm").addEventListener("click", () => {
           window.location.href = "/dashboard"
         } else {
           let data = response.json();
-          Alert.alert(data.message, "danger")
+          Alert.alert(data.message, "danger");
         }
       })
   }

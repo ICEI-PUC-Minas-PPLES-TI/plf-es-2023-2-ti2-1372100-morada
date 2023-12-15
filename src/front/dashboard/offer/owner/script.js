@@ -1,9 +1,10 @@
+import { Alert } from "bootstrap";
 import * as API from "../../../assets/script/api.js";
 import generateContract from "../../../assets/script/generateRent.js";
 
 let offersRecived = document.getElementById("content");
 
-API.get("offers/user")
+API.get("offers/user/owner")
   .then((response) => response.json())
   .then((offer) => {
 
@@ -13,6 +14,7 @@ API.get("offers/user")
     }
 
     offer.forEach((element) => {
+      if(element.status === "PENDING"){
       offersRecived.innerHTML += `
         <div class="mb-3 row border rounded">
             <div class="col-3">
@@ -27,7 +29,7 @@ API.get("offers/user")
                         </div>
                         <div id="buttons" style="height:100%;" class="col-3 d-flex flex-column text-end justify-content-around">
                             <button class="btn btn-success btn-sm" id="accept${element.id}">Aceitar</button>
-                            <button class="btn btn-danger btn-sm">Recusar</button>
+                            <button class="btn btn-danger btn-sm" id="refuse${element.id}">Recusar</button>
                             </div>
                         </div>
                     </div>
@@ -35,12 +37,20 @@ API.get("offers/user")
             </div>
             </div>
         </div>    
-            `;
+            `
+      };
       let btnAccept = document.getElementById(`accept${element.id}`);
+      let btnRefuse =  document.getElementById(`refuse${element.id}`);
 
       btnAccept.addEventListener("click", () => {
         console.log(element)
-        generateContract(element.id)
+        acceptOffer(element.id);
+        generateContract(element.id);
+      })
+
+      btnRefuse.addEventListener("click", () => {
+        console.log(element);
+        refuseOffer(element.id);
       })
     });
 
@@ -56,3 +66,20 @@ function formatCurrency(value) {
   });
 }
 
+function refuseOffer(id){
+    API.put(`offers/${id}`, {
+      status: "REJECTED"
+    })
+      .then(response => {
+        if(response.status == 201){
+          Alert.alert("Oferta recusada", "danger");
+          window.location.reload();
+        }
+      })
+}
+
+function acceptOffer(id){
+  API.put(`offers/${id}`, {
+    status: "APPROVED"
+  })
+}

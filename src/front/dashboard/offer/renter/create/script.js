@@ -76,7 +76,8 @@ document.getElementById("formOffer").addEventListener("submit", function (event)
   })
   .then(response =>{
     if(response.status == 201){
-      window.location.href = "/dashboard"
+      Alert.alert("Oferta enviada com sucesso", "success")
+
     }else{
       let data = response.json()
       console.log("Debug 2")
