@@ -1,5 +1,3 @@
-# YAML 1.2
----
 authors: 
   - family-names: Teixeira Capanema
     given-names: Guilherme Leroy
@@ -10,8 +8,7 @@ authors:
   - family-names: Ferrari Azalim
     given-names: Luca
   - family-names: Dias Costa
-    given-names: Wanessa
-    
+    given-names: Wanessa 
   - name-suffix: Professor
     affiliation: PUC Minas
     family-names: De Paula
@@ -24,19 +21,9 @@ authors:
     affiliation: PUC Minas
     family-names: Baroni de Carvalho
     given-names: Juliana Amaral 
-
-
 cff-version: "1.1.0"
 keywords: 
   - "Plataforma de Locação"
   - "Experiência de Aluguel"
   - "Inovação Imobiliária"
-message: |
-    "Please cite this software using these metadata."
-repository-code: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2023-2-ti2-1372100-morada"
-title: "Morada"
-abstract: |
-    "
-    Morada é uma plataforma inovadora para locação e anúncio de imóveis, que busca simplificar e aprimorar a experiência de aluguel. Ao centralizar anúncios, integrar processos e documentações, a plataforma oferece recursos como anúncios personalizados, agendamento de visitas, sistema de propostas e documentação online. Desenvolvida com tecnologias modernas como Java Spring Boot, Docker e MariaDB, a Morada automatiza completamente os processos, oferecendo uma experiência eficiente, moderna e descomplicada para locatários e proprietários.
-    "
-...
+date-released: 2023-12-21
